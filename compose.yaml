@@ -29,10 +29,13 @@ services:
 
   todo-database:
     image: mongo:6
-    #volumes: 
-    #  - database:/data/db
+    # Mount the 'database' volume to this path inside the container.
+    # (mongoDB path)
+    volumes:
+     - database:/data/db
     ports:
       - 27017:27017
 
-#volumes:
-  #database:
+# Define a volume named 'database'.
+volumes:
+  database:
