@@ -2,13 +2,13 @@
 # If you need more help, visit the Docker compose reference guide at
 # https://docs.docker.com/compose/compose-file/
 
-# Here the instructions define your application as two services called "todo-app" and “todo-database”
-# The service “todo-app” is built from the Dockerfile in the /app directory,
-# and the service “todo-database” uses the official MongoDB image 
-# from Docker Hub - https://hub.docker.com/_/mongo. 
+# Here the instructions define your application as two services called 
+# "todo-app" and “todo-database”.
 # You can add other services your application may depend on here.
 
 services:
+  # The todo-app service is built using this project's ./app directory (checks for 
+  # Dockerfile there). This service is a node.js application.
   todo-app:
     build:
       context: ./app
@@ -27,10 +27,14 @@ services:
           target: /usr/src/app
           action: sync
 
+  # The todo-database service uses the official MongoDB image 
+  # from Docker Hub - https://hub.docker.com/_/mongo.
+  # We don't need any custom code to run MongoDB, although we mount a volume
+  # so the data persists.
   todo-database:
     image: mongo:6
     # Mount the 'database' volume to this path inside the container.
-    # (mongoDB path)
+    # (Recall the container is based on a MongoDB image, hence the path)
     volumes:
      - database:/data/db
     ports:
