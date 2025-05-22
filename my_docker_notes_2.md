@@ -9,6 +9,11 @@ A multi-container app with a compose file.
 This file tells Docker how to run your application.
 It defines the application's services, networks, volumes, and more.
 
+(Recall that the Dockerfile tells Docker how to build the image)
+
+(a service represents a computing resource in an app that can be scaled
+or replaced independently from other components... https://docs.docker.com/reference/compose-file/services/)
+
 ### Running the compose file/the app
 This command essentially builds and runs the app.
 More specifically, it reads the compose file; builds the networks, 
